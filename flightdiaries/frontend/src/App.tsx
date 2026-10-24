@@ -36,7 +36,7 @@ const App = () => {
       <label>Comment<textarea value={comment} onChange={event => setComment(event.target.value)} /></label>
       <button disabled={saving} type="submit">{saving ? 'Saving…' : 'Add'}</button>
     </form><h2>Diary entries</h2>
-    {loading ? <p role="status">Loading diaries…</p> : diaries.length === 0 ? <p>No diary entries yet.</p> : diaries.map(diary => <section key={diary.id}><h3>{diary.date}</h3><p>Visibility: {diary.visibility}</p><p>Weather: {diary.weather}</p></section>)}
+    {loading ? <p role="status">Loading diaries…</p> : diaries.length === 0 ? <p>No diary entries yet.</p> : [...diaries].reverse().map(diary => <section key={diary.id}><h3>{diary.date}</h3><p>Visibility: {diary.visibility}</p><p>Weather: {diary.weather}</p></section>)}
   </main>;
 };
 export default App;

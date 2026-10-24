@@ -37,7 +37,7 @@ const PatientDetail = ({ id, diagnoses }: { id: string; diagnoses: Diagnosis[] }
     {patient.entries.length === 0 && <p>No entries yet.</p>}
     {patient.entries.map(entry => <EntryDetails key={entry.id} entry={entry} diagnoses={diagnoses} />)}
     <Button variant="contained" onClick={() => setOpen(true)}>Add New Entry</Button>
-    <Dialog fullWidth open={open} onClose={close} aria-labelledby="entry-title"><DialogTitle id="entry-title">Add a new entry</DialogTitle><DialogContent><EntryForm diagnoses={diagnoses} onSubmit={submit} onCancel={close} saving={saving} error={entryError} /></DialogContent></Dialog>
+    {open && <Dialog fullWidth open onClose={close} aria-labelledby="entry-title"><DialogTitle id="entry-title">Add a new entry</DialogTitle><DialogContent><EntryForm diagnoses={diagnoses} onSubmit={submit} onCancel={close} saving={saving} error={entryError} /></DialogContent></Dialog>}
   </>;
 };
 const PatientPage = ({ diagnoses }: { diagnoses: Diagnosis[] }) => {
